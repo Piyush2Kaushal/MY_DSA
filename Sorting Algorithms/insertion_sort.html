@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion</title>
+</head>
+<body>
+    <script>
+        //This is the simplest sorting algorithm that uses the same phenomenon as a deck of card game 
+        // It virtually splits the array into two parts -- unsorted and sorted 
+        //Element from the unsorted part are chosen & inserted at the correct position in the sorred part 
+        //It iterates through the array from element 1 to element n and compare the current element to all the previous element 
+        
+        
+        let array = [2,5,8,3,6,11,55,0];
+        let n = array.length;
+        function insertionsort(){
+            for(i=1; i<n; i++){
+                let temp = array[i];
+                for(j=i-1;j>=0 && temp < array[j];j--){
+                    array[j+1] = array[j];
+                }
+                array[j+1] = temp;
+            }
+            console.log(`sorted array ${array}`);
+        }
+        insertionsort();
+        //Time complexcity -> O(n^2)[Average and wrost case]  & 0(n)[In best case]
+        //Space complexcity -> O(1)
+        //Insertion sort is stable beacause it can't change the positon of the same element  
+
+    </script>
+</body>
+</html>

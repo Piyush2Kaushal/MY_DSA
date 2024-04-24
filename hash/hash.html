@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hashing</title>
+</head>
+<body>
+    <Script>
+        class Hashtable{
+            constructor(){
+                this.table = new Array(10);
+                this.size = 0;
+            }
+            //Implimenting hash() function
+            hash(key){
+                let hash = 0;
+                for (let index = 0; index < key.length; index++) {
+                    hash += key.charCodeAt(index);
+                }
+                return hash % this.table.length;  
+            }
+            //Hash have 3 operations set, get, search
+            
+            //set operation is used to insert element into the hash table.
+            set(key,value){
+                let indexx = this.hash(key);
+                this.table[indexx] = [key,value];
+                this.size++;
+            }
+            //Get operation is used to retrieve the element from the hash table.
+            get(key){
+                let indeex = this.hash(key);
+                let keyvalue  = this.table[indeex];
+                console.log(keyvalue[1]);
+            }
+            //Search is used to check the weather an element is present in the hash table.
+            search(key){
+                let hashtable = this.hash(key);
+                if(hashtable){
+                    console.log(`Element ${key} is present in a hash table at the location of ${hashtable}`);
+                }
+                else{
+                    console.log(`${key} is not present in a hashtable`);
+                }
+            }
+        }
+        let h1 = new Hashtable();
+        h1.set("apple",200);
+        h1.set("kiwi",20);
+        h1.set("grapes",2);
+        console.log(h1);
+        h1.get("kiwi");
+        h1.search("kiwi");
+
+    </Script>
+</body>
+</html>

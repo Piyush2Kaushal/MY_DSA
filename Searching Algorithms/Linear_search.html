@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear search</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 4rem;
+            color: rgb(59, 174, 135);
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            width: 100%;
+            gap: 2%;
+        }
+
+        #inp {
+            font-size: 1.5rem;
+            width: 95vh;
+            height: 10vh;
+        }
+
+        button {
+            font-size: 2rem;
+            padding: 1%;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Linear Search</h1>
+    <!-- In the Linear search algorithm we check for the element iteratively one by one from start to end to the other.
+    Time complexity of linear search in wrost case is O(N).
+    Time complexity of linear search in best case is O(1).
+    Time complexity of linear search in average case is O(N/2).
+    Auxiliary space complexity of linear search O(1).
+    Linear search is best for when array has less size -->
+
+    <div>
+        <input type="number" id="inp" placeholder="Enter number which you want to search in an array">
+        <button onclick="return work()">Search</button>
+    </div>
+    <script>
+        function work() {
+            let arr = [20, 100, 40, 22, 37, 38, 34, 18, 6, 1, 4, 9];
+            let inp = document.getElementById("inp").value;
+            let n = arr.length;
+            function linearsearch(arr, inp) {
+                for (let i = 0; i <= n; i++) {
+                    if (arr[i] == inp) {
+                        alert(`The element ${inp} is present in an array its location is ${i}`);
+                        break;
+                    }  
+                }
+                if (arr[i] != inp) {
+                        alert(`Element ${inp} not found`);
+                    }
+            }
+            linearsearch(arr, inp);
+        }
+    </script>
+</body>
+
+</html>

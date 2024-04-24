@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a2 = 3;
+        let b2 = 5;
+        (function power(a,b){
+        let ans = 0;
+         if(b==1) return a;
+         let x = power(a,b/2);
+         if(b%2==0) {
+            ans = x*x;
+            console.log(ans);
+         } 
+         else{
+            ans =  x*x*a;
+            console.log(ans);
+         } 
+        })();
+    </script>
+</body>
+</html>

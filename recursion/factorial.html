@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fact</title>
+</head>
+<body>
+    <input id="num" type="number" placeholder="Enter number w">
+    <button onclick="return work()">submit</button>
+    <h1 id="print"></h1>
+    <script>
+        //FACTORIAL WITH THE HELP OF RECURSION
+        
+        function work() {
+        let num  = document.getElementById("num").value;
+        console.log(num);
+        function fact(n){
+            if(n == 0){
+                return 1;
+            }
+            return n * fact(n-1);
+        }
+        let print = document.getElementById("print").innerHTML = (fact(num));
+    }
+       
+    </script>
+</body>
+</html>

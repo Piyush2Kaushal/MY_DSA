@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // It uses a divided and conquer algorithm to sort the element 
+        // Its chooses an element as pivot and partition the array around the chosen pivot 
+        // Pivot cxan be choosen as first element as last element as random element or as median 
+        // partitioning the element is one of the key processes of the quick sort
+        // Its puts pivot element at the correct position in a sorted array and puts all other element Which are smaller /greater than pivot accordingly 
+
+        const arr = [8,20,-2,4,-6];
+        console.log(arr + " before sorting ");
+        function quicksort(arr) {
+            if(arr.length < 2){
+                return arr;
+            }
+            let pivot = arr[arr.length - 1];
+            let left = [];
+            let right = [];
+
+            for (let i = 0; i < arr.length -1; i++){
+                if(arr[i] < pivot){
+                    left.push(arr[i]);
+                }
+                else {
+                    right.push(arr[i]);
+                }
+            }
+            return [...quicksort(left), pivot , ...quicksort(right)];
+        }
+        console.log(quicksort(arr));
+        
+
+        //Time complexcity -> O(nlogn)[Average and wrost case]  & 0(n)[In best case]
+        //Space complexcity -> O(1)
+        //Quick sort is not stable beacause it can change the positon of the same element  
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion</title>
+</head>
+
+<body>
+    <script>
+        class Node {
+            constructor(data) {
+                this.data = data;
+                this.next = null;
+            }
+        }
+        class Linklist {
+            constructor() {
+                this.size = 0;
+                this.head = null;
+            }
+            insert(data) {
+                let node = new Node(data);
+                let current;
+                if (this.head == null) {
+                    this.head = node;
+                }
+                else {
+                    current = this.head;
+                    while (current.next !== null) {
+                        current = current.next;
+                    }
+                    current.next = node;
+                }
+                this.size++;
+            }
+            traverse() {
+                let current = this.head;
+                console.log(current.data);
+                while (current.next !== null) {
+                    current = current.next;
+                    console.log(current.data);
+                }
+            }
+            deletion() {
+                if (this.head == null) {
+                    console.log(`Linklist is empty`);
+                }
+                let node = this.head;
+                while (node.next.next !== null) {
+                    node = node.next;
+                }
+                node.next = null;
+                this.size--;
+            }
+            search(data) {
+                let node = this.head;
+                let count = 1;
+                while (node.next !== null) {
+                    if (node.data == data) {
+                        console.log(`${data} is found at the location ${count}`);
+                    }
+                    node = node.next;
+                    count++;
+                }
+                if (node.data == data) {
+                    console.log(`${data} is found at the location ${count}`);
+                }
+                
+            }
+        }
+        let obj = new Linklist();
+        obj.insert(54);
+        obj.insert(67);
+        obj.insert("apple");
+        obj.insert("kiwi");
+        obj.traverse();
+        obj.deletion();
+        obj.traverse();
+        obj.search(54);
+
+    </script>
+</body>
+
+</html>

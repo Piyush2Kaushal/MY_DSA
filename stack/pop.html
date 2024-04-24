@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pop</title>
+</head>
+<body>
+    <script>
+        let arr = [2,4,5,7,1];
+        let arr1 = [];
+        class Stack{
+            constructor(stack){
+                this.stack = stack;
+                this.top = this.stack.length -1;
+            }
+            pop(){
+                if(this.stack == -1){
+                    console.log(`Stack in underflow`);
+                    return;
+                }
+                var x = this.stack[this.top];
+                this.top = this.top -1;
+                this.stack = this.stack.slice(0,this.top + 1);
+                console.log(`${x} --> {${this.stack}}`);
+                return;
+            }
+        }
+        let s1 = new Stack(arr);
+        for (let index = 0; index < arr.length; index++) {
+            s1.pop() 
+        }
+    </script>
+    
+</body>
+</html>

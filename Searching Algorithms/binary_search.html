@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary search</title>
+</head>
+
+<body>
+
+    <script>
+        //Binary search - 
+        //We have two condition for using binary search 
+        // 1- we can apply binary search only on array 
+        // 2- Array element must be sorted 
+
+        //Binary search is a searching technique that work on the divide and conquer approch 
+        // Time complexity in best case is - O(1)
+        // Time complexity in best case is - O(logn)
+        // Time complexity in best case is - O(logn)
+        let array = [1, 2, 3, 4, 5, 6, 7, 8, 20, 40, 50, 70];
+        let find = 20;
+        let n = array.length;
+        function binarysearch() {
+            let start = 0;
+            let end = n - 1;
+            while (start <= end) {
+                mid = Math.floor((start + end) / 2);
+
+                if (array[mid] === find) {
+                    return mid;
+                }
+                else if (array[mid] < find) {
+                    start = mid + 1;
+                }
+                else {
+                    end = mid - 1;
+                }
+
+            }
+            return -1;
+        }
+        let result = binarysearch();
+        if (result != -1) {
+            console.log(`Element found at ${result}`);
+        }
+        else{
+            console.log('not found');
+        }
+    </script>
+</body>
+
+</html>

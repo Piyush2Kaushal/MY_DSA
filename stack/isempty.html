@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>isempty</title>
+</head>
+<body>
+    <script>
+        let arr = [];
+        let arr1 = [1,2,3];
+        class Stack {
+            constructor(arr){
+                this.arr = arr;
+                this.top = this.arr.length -1;
+            }
+            isempty(){
+                if(this.top == -1){
+                    console.log(`array is empty `);
+                    return;
+                }
+                return console.log(`array is not empty its size is ${this.top +1}`);;
+            }
+        }
+        let s1 = new Stack(arr);
+        let s2 = new Stack(arr1);
+        s1.isempty();
+        s2.isempty();
+    </script>
+    
+</body>
+</html>

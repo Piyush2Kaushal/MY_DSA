@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>push</title>
+</head>
+<body>
+    <script>
+        class Stack{
+            constructor(size){
+                if(isNaN(size)){
+                    size = 6;
+                }
+                this.size = size;
+                this.top = 0;
+                this.arr = [];
+            }
+            push(element){
+                if(this.size <= this.top){
+                    console.log(`Array is overflow`);
+                    return;
+                }
+                (this.arr)[this.top] = element;
+                this.top = this.top + 1;
+                return (this.arr)
+            }
+        }
+        let s1 = new Stack(4);
+        for (let index = 0; index < 4; index++) {
+            let element = Math.floor((Math.random()*10) +1);
+            console.log(s1.push(element));
+        }
+    </script>
+</body>
+</html>

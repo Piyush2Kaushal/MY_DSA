@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue</title>
+    <style>
+        h1{
+            text-align: center;
+            font-size: 3rem;
+        }
+        .main_p{
+            margin-left: 30%;
+        }
+        .main{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .box{
+            border: 2px solid black;
+            width: 15%;
+            text-align: center;
+            padding: 2%;
+        } 
+    </style>
+</head>
+
+<body>
+    <h1>Queues</h1>
+    <p>
+        <ul class="main_p">
+            <li>Queue ia an abstract data structure that is like stack.</li>
+            <li>it follows FIFO (First in First Out ). Unlike stack, queue has two open ends</li>
+            <li>Data insertion is done from the rear end which is the end of the queue or tail of the queue</li>
+            <li>Data deletion is performed from the front end which is the head of the queue</li>
+        </ul>
+    </p>
+    <div class="main">
+        <div class="box">
+            <h3>Enqueue</h3>
+            <p>
+            <ul>
+                <li>Insertion of the data element in a queue from the rear end</li>
+            </ul>
+            </p>
+        </div>
+        <div class="box">
+            <h3>Dequeue</h3>
+            <p>
+            <ul>
+                <li>deletion of a data element in a queue from the front end.</li>
+            </ul>
+            </p>
+        </div>
+        <div class="box">
+            <h3>Peek</h3>
+            <p>
+            <ul>
+                <li>Return the first element of an array without removing it.</li>
+            </ul>
+            </p>
+        </div>
+        <div class="box">
+            <h3>Traversing</h3>
+            <p>
+            <ul>
+                <li>Displaying all the element of the queue</li>
+            </ul>
+            </p>
+        </div>
+        <div class="box">
+            <h3>Searching</h3>
+            <p>
+            <ul>
+                <li>Used to check wheather an element is present in a queue or not. it return index of the element. if the element is found</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        //Enqueue
+        //Insertion of data element in a queue from the rare end.
+        class Queue {
+            constructor() {
+                this.count = 0;
+                this.lowercount = 0;
+                this.obj = {};
+            }
+            enqueue(element) {
+                this.obj[this.count] = element;
+                this.count++;
+            }
+            dequeue() {
+                if (this.lowercount === this.count) {
+                    return console.log(" no more deletion perform because object is empty");
+                }
+                let result = this.obj[this.lowercount];
+                delete this.obj[this.lowercount];
+                this.lowercount++;
+                return result;
+            }
+            peek() {
+                if (this.lowercount === this.count) {
+                    return console.log(" no peek value object is empty");
+                }
+                return this.obj[this.lowercount];
+            }
+            traversing() {
+                if (this.lowercount === this.count) {
+                    return console.log("no traverse perform object empty");
+                }
+                for (let index = 0; index < this.count; index++) {
+                    console.log(`${this.obj[index]}`);
+                }
+            }
+            search(ele) {
+                let p = 0;
+                if (this.lowercount === this.count) {
+                    return console.log("no search perform object empty");
+                }
+                for (let index = 0; index < this.count; index++) {
+                    if (this.obj[index] == ele) {
+                        console.log(`Element ${ele} found at the location of ${index}`);
+                        p = -1;
+                        break;
+                    }
+                }
+                if (p != -1) {
+                    console.log(`item not found`);
+                }
+            }
+        }
+        let q1 = new Queue();
+        q1.enqueue(20);
+        q1.enqueue(30);
+        q1.enqueue(40);
+        q1.enqueue(50);
+        q1.enqueue(60);
+        q1.dequeue();
+        q1.traversing();
+        console.log(q1);
+        console.log(q1.peek());
+        q1.search(40);
+    </script>
+</body>
+
+</html>

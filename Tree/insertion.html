@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion</title>
+</head>
+
+<body>
+    <script>
+        class TreeNode {
+            constructor(element) {
+                this.left = null;
+                this.right = null;
+                this.element = element;
+            }
+        }
+        class BinaryTreeSearch {
+            constructor() {
+                this.root = null;
+            }
+            insert(element) {
+                var newdata = new TreeNode(element);
+                if (element == null) {
+                    return false;
+                }
+                else if (this.root == null) {
+                    this.root = newdata;
+                }
+                else {
+                    this.insertNode(newdata, this.root);
+                }
+                return true;
+            }
+            insertNode(data, node) {
+                if (data.element < node.element) {
+                    if (node.left == null) {
+                        node.left = data;
+                    }
+                    else {
+                        this.insertNode(data, node.left);
+                    }
+                }
+                else if (data.element > node.element) {
+                    if (node.right == null) {
+                        node.right = data;
+                    }
+                    else {
+                        this.insertNode(data, node.right);
+                    }
+                }
+            }
+            remove(element) {
+                this.root = this.removeNode(this.root, element)
+            }
+            // a recursive function to insert a new value in binary search tree
+            removeNode(current, element) {
+                // base case, if the tree is empty 
+                if (current === null) return current
+                // when value is the same as current's value, this is the node to be deleted
+                if (element === current.element) {
+                    // for case 1 and 2, node without child or with one child
+                    if (current.left === null && current.right === null) {
+                        return null
+                    } else if (current.left === null) {
+                        return current.right
+                    } else if (current.right === null) {
+                        return current.left
+                    } else {
+                        /// node with two children, get the inorder successor, 
+                        //smallest in the right subtree
+
+                        let tempNode = this.kthSmallestNode(current.right)
+                        current.element = tempNode.element
+
+                        /// delete the inorder successor
+
+                        current.right = this.removeNode(current.right, tempNode.element)
+                        return current
+                    }
+
+                    // recur down the tree
+
+                } else if (element < current.element) {
+                    current.left = this.removeNode(current.left, element)
+                    return current
+
+                } else {
+                    current.right = this.removeNode(current.right, element)
+                    return current
+                }
+            }
+
+            /// helper function to find the smallest node
+
+            kthSmallestNode(node) {
+                while (!node.left === null)
+                    node = node.left
+
+                return node
+            }
+
+
+            search(element){
+                return this.searchelement(this.root,element);
+            }
+            searchelement(node,element){
+                if(node ===  null){
+                    return false;
+                }
+                else if(node.element < element){
+                    return this.searchelement(node.right,element);
+                }
+                else if(node.element > element){
+                    return this.searchelement(node.left,element);
+                }
+                else{
+                    return true;
+                }
+            }
+
+
+
+            traversein(callback){
+                this.inorder(this.root,callback);
+            }
+            inorder(node,callback){
+                if(node != null){
+                    this.inorder(node.left,callback);
+                    callback(node.element);
+                    this.inorder(node.right,callback);
+                }
+            }
+            traversepre(callback){
+                return this.preorder(this.root,callback);
+            }
+            preorder(node,callback){
+                if(node != null){
+                    callback(node.element);
+                    this.preorder(node.left,callback);
+                    this.preorder(node.right,callback);
+                }
+            }
+            traversepost(callback){
+                return this.postorder(this.root,callback);
+            }
+            postorder(node,callback){
+                if(node != null){
+                    this.postorder(node.left,callback);
+                    this.postorder(node.right,callback);
+                    callback(node.element);
+                }
+            }
+        }
+        let obj = new BinaryTreeSearch();
+        obj.insert(10);
+        obj.insert(20);
+        obj.insert(40);
+        obj.insert(4);
+        obj.insert(12);
+        obj.remove(20);
+        console.log(obj.search(12));
+        console.log(obj);
+        
+        console.log(`---------------------------IN----------------------------------`);
+        obj.traversein((value)=>{
+            console.log(value);
+        });
+        console.log(`---------------------------POST----------------------------------`);
+        obj.traversepost((value)=>{
+            console.log(value);
+        });
+        console.log(`---------------------------PRE----------------------------------`);
+        obj.traversepre((value)=>{
+            console.log(value);
+        });
+    </script>
+</body>
+
+</html>

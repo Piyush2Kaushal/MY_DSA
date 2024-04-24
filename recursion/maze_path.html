@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mazepath</title>
+</head>
+
+<body>
+        <input id="er" type="number" placeholder=" Enter number of rows">
+        <input id="ec" type="number" placeholder=" Enter number of cols">
+        <button onclick=" return work()">Submit</button>
+        <p id="p"></p>
+
+
+    <script>
+        // function work() {
+        //     let cr = 1;
+        //     let cc = 1;
+        //     let er = document.getElementById("er").value;
+        //     let ec = document.getElementById("ec").value;
+        //     function maze(cr, cc, er, ec) {
+        //         let rightways = 0;
+        //         let downways = 0;
+        //         if (er == cr && cc == ec) {
+        //             return 1;
+        //         }
+        //         else if (cr == er) {
+        //             rightways += maze(cr, cc + 1, er, ec);
+        //         }
+        //         else if (cc == ec) {
+        //             downways += maze(cr + 1, cc, er, ec);
+        //         }
+        //         else if (cr < er && cc < ec) {
+        //             rightways += maze(cr, cc + 1, er, ec);
+        //             downways += maze(cr + 1, cc, er, ec);
+        //         };
+        //         let totalways = rightways + downways;
+        //         return totalways;
+        //     }
+        //     let ans = maze(cr, cc, er, ec);
+        //     document.getElementById("p").innerHTML = `Total number of ways (MAZE PATH) => <b>${ans}</b>`;
+        // }
+
+
+        // WITH 2 variable;
+        function work() {
+            let er = document.getElementById("er").value;
+            let ec = document.getElementById("ec").value;
+            function maze(er,ec) {
+                let rightways = 0;
+                let downways = 0;
+                if (er == 1 && ec == 1) {
+                    return 1;
+                }
+                else if (er==1) {
+                    rightways += maze(er,ec-1);
+                }
+                else if (ec == 1) {
+                    downways += maze(er-1,ec);
+                }
+                else if (er > 1 && ec >1) {
+                    rightways += maze(er,ec-1);
+                    downways += maze(er-1,ec);
+                };
+                let totalways = rightways + downways;
+                return totalways;
+            }
+            let ans = maze(er,ec);
+            document.getElementById("p").innerHTML = `Total number of ways (MAZE PATH) => <b>${ans}</b>`;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+What are Data Structures?
+Data structures are containers used to organize and store data in a computer so that it can be accessed and manipulated efficiently. They provide a way to manage and organize data in a systematic manner, enabling efficient storage, retrieval, and manipulation operations. Examples of common data structures include arrays, linked lists, stacks, queues, trees, graphs, and hash tables.
+
+
+What are Algorithms?
+Algorithms are step-by-step procedures or sets of instructions used to solve specific problems or perform computational tasks. They provide a systematic approach to problem-solving and are crucial for optimizing the performance and efficiency of computer programs. Algorithms can range from simple tasks like searching and sorting to complex operations like pathfinding and machine learning.
+
+
+Why Study DSA in JavaScript?
+JavaScript is a versatile and widely-used programming language that is particularly well-suited for web development, server-side scripting, and building interactive applications. By studying DSA in JavaScript, you not only gain a deeper understanding of fundamental computer science concepts but also learn how to apply them in practical, real-world scenarios. JavaScript's flexible syntax and dynamic nature make it an excellent choice for implementing and experimenting with various data structures and algorithms.
+
+
+Type of Data structure ?
+Data structure --- 
+1- Linear --- (a)Array, (b)Linked list, (c)Stack, (d)Queue,
+2- Non LInear --- (a)tree, (b)graph, (c)set, (d)Map, etc

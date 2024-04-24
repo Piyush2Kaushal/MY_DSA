@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge</title>
+</head>
+<body>
+    
+    <script>
+        // It is a divided and conquer strategies
+        function mergeSort(arr){
+            if(arr.length < 2){
+                return arr;
+            }
+            let mid = Math.floor(arr.length / 2);
+            let left = arr.slice(0,mid);
+            let right = arr.slice(mid);
+
+            return merge(mergeSort(left),mergeSort(right));
+        }
+        function merge(left,right){
+            let sortedarray = [];
+            while(left.length && right.length){
+                if(left[0] <= right[0]){
+                    sortedarray.push(left.shift());
+                }
+                else {
+                    sortedarray.push(right.shift());
+                }
+            }
+            return [...sortedarray,...left,...right];
+        }
+        console.log(mergeSort([8,20,-2,4,-6]));
+        //Time complexcity -> O(nlogn) in all case's
+        //Space complexcity -> O(n)
+        //Merge sort is stable beacause it can't change the positon of the same element  
+        
+    </script>
+</body>
+</html>

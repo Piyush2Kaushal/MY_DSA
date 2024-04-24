@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array</title>
+</head>
+<body>
+    <script>
+        //An array is a collection of items stored at contiguous memory locations
+        //elements between the brackets [] 
+        //the syntax 
+        var array = [67, 12, 90, 76, 19, 28, 7];
+        console.log(array);
+
+
+        // you can also declare array as it 
+        var array2 = new Array(78, 90, 62, 88, 93, 50);
+        console.log(array2);
+
+
+
+        //Accessing a value in an array
+        console.log(array[3]);
+
+        // You acn also Modify an array
+        array[3] = 86;
+        console.log(array[3]);
+        console.log(array);
+
+
+        // Inserting values at last
+        var array3 = [78, 90, 62, 88, 93, 50];
+        array3.push(82)
+        console.log(array3);
+
+        // Inserting values at begning
+        var array4 = [78, 90, 62, 88, 93, 50];
+        array4.unshift(74, 58)
+        console.log(array4);
+
+        // deleting value from last
+        var array5 = [78, 90, 62, 88, 93, 50];
+        array5.pop()
+        console.log(array5);
+
+        // deleting value from starting
+        var array4 = [78, 90, 62, 88, 93, 50];
+        array4.shift()
+        console.log(array4);
+    </script>
+</body>
+</html>

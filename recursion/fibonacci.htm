@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci</title>
+</head>
+<body>
+    <script>
+        //fibonacci series with recursion
+        // 1 1 2 3 5 8 13 21 34 55 ........... n;
+        let n_term = 10;
+        let ans = 0;
+        function fibo(n){ 
+            if(n == 1 || n==0){
+                return 1;
+            }
+            else
+            ans = fibo(n-1) + fibo(n-2);
+            return ans;
+        }
+        console.log(fibo(n_term));
+
+    </script>
+</body>
+</html>

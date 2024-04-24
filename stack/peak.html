@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stack</title>
+</head>
+<body>
+    <script>
+        //In stack peek is a technique to return the value of the value of the top without removing or inserting any element 
+        //It is used to view the last element or recently added element in the stack
+        
+        let arr = [2,5,1,6,9,4];
+        let arr1 = [];
+        class Stack {
+            constructor(stack){
+                this.stack = stack;
+            }
+            peak(){
+                if(this.stack.length == 0){
+                    console.log("stack is underflow");
+                }
+                else{
+                    let top = this.stack.length - 1;
+                    return (this.stack[top]);
+                }
+            }
+        }
+        let s1 = new Stack(arr);
+        let s2 = new Stack(arr1);
+        console.log(s2.peak());
+    </script>
+</body>
+</html>

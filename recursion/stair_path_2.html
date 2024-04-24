@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stair Path</title>
+</head>
+<body>
+    
+    <script>
+        //we need to calculate the number of ways to cross the stair from start to end 
+        //Condition - 1- Only single or double step 0r 3 step
+        let no_stair = 3;
+        let ways = 0;
+        function stairpath(n) {
+            if(n == 1 || n == 0){
+                return 1;
+            }
+            else if(n==2){
+                return 2;
+            }
+            else
+            ways = stairpath(n-1) + stairpath(n-2) + stairpath(n-3);
+            return ways;
+        }
+        console.log(stairpath(no_stair));
+        
+
+    </script>
+</body>
+</html>

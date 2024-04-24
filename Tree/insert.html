@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insert</title>
+</head>
+<body>
+    <script>
+        class Node{
+            constructor(element){
+                this.element = element;
+                this.right = null;
+                this.left = null;
+            }
+        }
+        class Tree {
+            constructor(){
+                this.root = null;
+            }
+
+            insert(element){
+                let newele = new Node(element);
+                if(element == null){
+                    console.log(`Tree is empty`);
+                }
+                if(this.root == null){
+                    this.root = newele;
+                }
+                else{
+                    this.insernext(this.root,newele);
+                }
+                return true;
+            }
+            insernext(node,data){
+                if(node.element > data.element){
+                    if(node.left == null){
+                        node.left = data;
+                    }
+                    else{
+                        this.insernext(node.left,data);
+                    }
+                }
+                if(node.element < data.element){
+                    if(node.right == null){
+                        node.right = data;
+                    }
+                    else{
+                        this.insernext(node.right,data);
+                    }
+                }
+            }
+            remove(element){
+        this.root = this.removeNode(this.root, element)
+    }
+    // a recursive function to insert a new value in binary search tree
+    
+    removeNode(current, element) {
+        
+        // base case, if the tree is empty 
+        
+       if(current === null) return current
+        
+        // when value is the same as current's value, this is the node to be deleted
+        
+        if (element === current.element) {
+             
+            // for case 1 and 2, node without child or with one child
+            
+            if (current.left === null && current.right === null){
+                
+                    return null
+                
+                }else if(current.left === null){
+                
+                    return current.right 
+             
+                }else if(current.right === null){
+                
+                    return current.left
+                
+                }else{
+                    
+                    /// node with two children, get the inorder successor, 
+                    //smallest in the right subtree
+                    
+                    let tempNode = this.kthSmallestNode(current.right)
+                        current.element = tempNode.element
+                    
+                    /// delete the inorder successor
+                    
+                        current.right = this.removeNode(current.right, tempNode.element)
+                    return current
+            }
+
+        // recur down the tree
+            
+        }else if(element < current.element) {
+            
+            current.left = this.removeNode(current.left, element)
+            return current
+            
+        }else{
+            
+            current.right = this.removeNode(current.right, element)
+            return current
+        }
+    }
+    
+     /// helper function to find the smallest node
+    
+    kthSmallestNode(node) {
+        while(!node.left === null)
+            node = node.left
+
+        return node
+    }
+
+            // delete(element){
+            //     this.root = this.deletion(element,this.root);
+            // }
+
+            // deletion(element,node){
+            //     if(node.element == null){
+            //         return null;
+            //     }
+            //      if(node.element === element){
+            //         if(node.left == null && node.right == null){
+            //             return null;
+            //         }
+            //         else if(node.right == null){
+            //             return node.left;
+            //         }
+            //         else if(node.left == null){
+            //             return node.right
+            //         }
+            //         else{
+            //             let tempnode = this.temp(node.right);
+            //             node.element = tempnode.element;
+
+            //             node.right = this.deletion(node.right, tempnode.element);
+            //             return node
+            //         }
+            //     }
+            //     else if(node.element < element){
+            //         node.right = this.deletion(element,node.right);
+            //         return node;
+            //     }
+            //     else if(node.element > element){
+            //         node.left = this.deletion(element,node.left);
+            //         return node;
+            //     }
+
+            // }
+            // temp(node){
+            //     while(!node.left === null){
+            //         node = node.left;
+            //     }
+            //     return node;
+            // }
+        }
+        let obj = new Tree();
+        obj.insert(20);
+        obj.insert(10);
+        obj.insert(30);
+        obj.insertelement
+        obj.insert(35);
+        obj.insert(15);
+        obj.remove(20);
+        console.log(obj);
+
+    </script>
+</body>
+</html>

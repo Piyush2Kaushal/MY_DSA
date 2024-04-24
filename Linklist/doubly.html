@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doubly linkedlist</title>
+</head>
+<body>
+    <script>
+        class Node {
+            constructor(data) {
+                this.data = data;
+                this.next = null;
+                this.pre = null;
+            }
+        }
+        class Linklist {
+            constructor() {
+                this.size = 0;
+                this.head = null;
+
+            }
+            insert(data) {
+                let node = new Node(data);
+                let current;
+                if (this.head == null) {
+                    this.head = node;
+                }
+                else {
+                    current = this.head;
+                    while (current.next !== null) {
+                        current = current.next;
+                    }
+                    current.next = node;
+                    node.pre = current;
+                }
+                this.size++;
+            }
+        }
+        let dlink = new Linklist();
+        dlink.insert(1);
+        dlink.insert(99);
+        dlink.insert(2);
+        dlink.insert(2.5);
+        dlink.insert(3);
+        dlink.insert(4);
+        console.log(dlink);
+    </script>
+</body>
+</html>

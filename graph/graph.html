@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>graph</title>
+</head>
+
+<body>
+    <script>
+        // //directed graph
+        // class Graph {
+        //     constructor() {
+        //         this.elements = new Map();
+        //     }
+        //     add(airport) {
+        //         this.elements.set(airport, []);
+        //     }
+        //     addedge(origin, destination) {
+        //         this.elements.get(origin).push(destination);
+        //     }
+        //     removenode(airport) {
+        //         this.elements.delete(airport);
+        //         for (const ele of this.elements) {
+        //             ele[1].map((item, index) => {
+        //                 if (item === airport) {
+        //                     ele[1].splice(index, 1);
+        //                 }
+        //             });
+        //         }
+        //     }
+        //     removeedge(origin, destination) {
+        //         for (const ele of this.elements) {
+        //             if (ele[0] == origin) {
+        //                 ele[1].map((item, index) => {
+        //                     if (item === destination) {
+        //                         ele[1].splice(index, 1);
+        //                     }
+        //                 });
+        //             }
+        //         }
+        //     }
+        //     bfs(start,end){
+        //         const visited = new Set(start);
+        //         const queue = [start];
+        //         visited.add(start);
+        //         while(queue.length >0){
+        //             let airport = queue.shift();
+        //             let destinatio = this.elements.get(airport);
+        //             for (let destination of destinatio) {
+        //                 if(!visited.has(destination)){
+        //                     if(destination === end){
+        //                         console.log(`route exits between A and B `);
+        //                     }
+        //                     visited.add(destination);
+        //                     queue.push(destination);
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     dfs(start,end,visited = new Set()){
+        //         console.log(start);
+        //         visited.add(start);
+        //         const destination = this.elements.get(start);
+        //         for(const destination of destinations){
+        //             this.dfs(destination,end,visited);
+        //             if(destination === end){
+        //                 console.log("Route exits between A and D");
+        //             }
+        //         }
+        //     }
+        // }
+        // const elements = new Map();
+        // let obj = new Graph();
+        // obj.add("A");
+        // obj.add("B");
+        // obj.add("C");
+        // obj.add("D");
+        // obj.addedge("A", "B");
+        // obj.addedge("A", "c");
+        // obj.addedge("B", "D");
+        // obj.addedge("C", "D");
+        // obj.bfs("A","D");
+        // console.log(obj);
+        class Graph {
+    constructor() {
+        this.elements = new Map();
+    }
+    add(airport) {
+        this.elements.set(airport, []);
+    }
+    addedge(origin, destination) {
+        this.elements.get(origin).push(destination);
+    }
+    removenode(airport) {
+        this.elements.delete(airport);
+        for (const ele of this.elements) {
+            ele[1].filter((item) => item !== airport);
+        }
+    }
+    removeedge(origin, destination) {
+        for (const ele of this.elements) {
+            if (ele[0] == origin) {
+                ele[1] = ele[1].filter((item) => item !== destination);
+            }
+        }
+    }
+    bfs(start, end) {
+        if (!this.elements.has(start) || !this.elements.has(end)) {
+            console.log("Start or end node does not exist in the graph.");
+            return;
+        }
+        const visited = new Set();
+        const queue = [[start, [start]]];
+        while (queue.length > 0) {
+            const [current, path] = queue.shift();
+            visited.add(current);
+            const destinations = this.elements.get(current);
+            for (const destination of destinations) {
+                if (destination === end) {
+                    console.log(`Route found: ${path.join(" -> ")} -> ${destination}`);
+                    return;
+                }
+                if (!visited.has(destination)) {
+                    queue.push([destination, [...path, destination]]);
+                }
+            }
+        }
+        console.log("Route not found.");
+    }
+    dfs(start, end, visited = new Set(), path = []) {
+        if (!this.elements.has(start) || !this.elements.has(end)) {
+            console.log("Start or end node does not exist in the graph.");
+            return;
+        }
+        console.log(start);
+        visited.add(start);
+        path.push(start);
+        if (start === end) {
+            console.log("Route found:", path.join(" -> "));
+            return;
+        }
+        const destinations = this.elements.get(start);
+        for (const dest of destinations) {
+            if (!visited.has(dest)) {
+                this.dfs(dest, end, visited, path);
+            }
+        }
+    }
+}
+
+const obj = new Graph();
+obj.add("A");
+obj.add("B");
+obj.add("C");
+obj.add("D");
+obj.addedge("A", "B");
+obj.addedge("A", "C");
+obj.addedge("B", "D");
+obj.addedge("C", "D");
+obj.bfs("A", "D");
+obj.dfs("A", "D");
+    </script>
+</body>
+
+</html>

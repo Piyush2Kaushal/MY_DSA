@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collision</title>
+</head>
+<body>
+    <script>
+        class Hash{
+            constructor(){
+                this.table = new Array(10);
+                this.size = 0;
+            }
+            hash(key){
+                let hash = 0;
+                for (let index = 0; index < key.length; index++) {
+                    hash += key.charCodeAt(index);                    
+                }
+                return hash % this.table.length;
+            }
+            set(key,value){
+                let index = this.hash(key);
+                if(!this.table[index]){
+                    this.table[index] = [];
+                }
+                this.table[index].push([key,value]);
+        }
+        display(){
+            for (let value of this.table) {
+                let index = this.table.indexOf(value);
+                console.log(`${index} : ${value}`);
+            }
+        }
+        get(key){
+            let index = this.hash(key);
+            let values = this.table[index];
+            if(!values){
+                return undefined;
+            }
+            else{
+                for (let value of values) {
+                    if(value[0] == key){
+                        console.log(`${value[1]}`);
+                    }
+                }
+            }
+        }
+    }
+        let obj = new Hash();
+        console.log(obj.hash("mangoes"));
+        obj.set("apple",200);
+        obj.display();
+        obj.get("apple");
+        
+
+    </script>
+</body>
+</html>

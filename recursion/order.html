@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print</title>
+</head>
+<body>
+    <script>
+        //PRINT  N to 1
+        let num = 4;
+        function number(num){
+            if(num == 0){
+                return ;
+            }
+            console.log(num);
+            return number(num-1);
+        }
+        number(num);
+
+        //PRINT  1 to N
+        let num2 = 10;
+        let i= 1;
+        function number2(num2,i){
+            if(num2 < i){
+                return ;
+            }
+            console.log(i);
+            number2(num2,i+1);
+        }
+        number2(num2,i);
+
+
+        //PRINT  1 to N with single perameter 
+        let num3 = 4;
+        function number3(num3){
+            if(num3 == 0){
+                return;
+            }
+            number3(num3-1);
+            console.log(num3);
+        }
+        number3(num3);
+
+
+        //Print firstly N to 1 and then 1 to N 
+        let num4 = 8;
+        function number4(num4){
+            if(num4 == 0){
+                return;
+            }
+            console.log(num4);
+            number4(num4-1);
+            console.log(num4);
+        }
+        number4(num4);
+    </script>
+</body>
+</html>

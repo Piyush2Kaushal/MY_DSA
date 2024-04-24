@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sum</title>
+</head>
+<body>
+    <script>
+        //sum 1 to n (return type)
+        let n = 7;
+        function sum(n){
+            let num=0;
+            if(n == 0){
+                return 0;
+            }
+            num += n + sum(n-1);
+            return num;
+        }
+        console.log(sum(n)); 
+    </script>
+</body>
+</html>

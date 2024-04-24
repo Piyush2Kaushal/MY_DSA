@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <script>
+      class Set {
+         constructor() {
+            this.item = {};
+         }
+         add(element) {
+            this.item[element] = element;
+         }
+         deletion(element) {
+            if (this.has(element)) {
+               let property = element.toString();
+               delete this.item[property];
+               return true;
+            }
+            return false
+         }
+         has(element) {
+            return this.item.hasOwnProperty(element.toString());
+         }
+         traverse() {
+            console.log(`Elements are ${Object.values(this.item)}`);
+         }
+         union(otherset) {
+            if (!otherset instanceof Set) {
+               throw new Error(`Must be instanceof set`);
+            }
+            let newset = new Set();
+
+            Object.values(this.item).forEach((element) => {
+               newset.add(element);
+            });
+            Object.values(otherset.item).forEach((element) => {
+               newset.add(element);
+            });
+            return newset;
+         }
+         Intersection(otherset) {
+            if (!otherset instanceof Set) {
+               throw new Error(`Must be instanceof set`);
+            }
+            let newset = new Set();
+            Object.keys(this.item).forEach((element) => {
+               if (otherset.has(element)) {
+                  newset.add(element);
+               }
+            })
+            return newset;
+         }
+         differnce(otherset) {
+            if (!otherset instanceof Set) {
+               throw new Error(`Must be instanceof set`);
+            }
+            let newset = new Set();
+            Object.keys(this.item).forEach((element) => {
+               if (!otherset.has(element)) {
+                  newset.add(element);
+               }
+            })
+            return newset;
+         }
+      }
+      let obj = new Set();
+      let obj1 = new Set();
+      obj1.add(10);
+      obj1.add(40);
+      obj1.add(50);
+      obj.add(10);
+      obj.add(10);
+      obj.add(20);
+      obj.add(30);
+      obj.deletion(30);
+      console.log(obj.has(30));
+      console.log(obj);
+      obj.traverse();
+      let s1 = obj1.differnce(obj);
+      console.log(s1);
+
+
+   </script>
+</body>
+
+</html>
